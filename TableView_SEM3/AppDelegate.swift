@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let newVc =  UINavigationController(rootViewController: LIstVC())
         window?.rootViewController = newVc
         
-        let videoVc =  UINavigationController(rootViewController: VideoPlayVC())
-        window?.rootViewController = videoVc
         
         let videoVc1 =  UINavigationController(rootViewController: DirectorListMoviesVC())
         window?.rootViewController = videoVc1

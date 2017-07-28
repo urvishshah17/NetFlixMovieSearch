@@ -63,7 +63,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     
     if imgURL != nil
     {
-        let data = NSData(contentsOf: imgURL as! URL)
+        let data = NSData(contentsOf: imgURL! as URL)
         myCell.imgButton.image = UIImage(data: data as! Data)
     }
 
@@ -82,15 +82,7 @@ func navigate(cell: UITableViewCell){
     self.navigationController?.pushViewController(secondVC, animated: true)
     
 }
-func navigatevideo(cell: UITableViewCell){
-    
-    let videoVC = VideoPlayVC() as UIViewController
-    
-    self.navigationController?.pushViewController(videoVC, animated: true)
-    
-    
-    
-}
+
 
 
 override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -247,9 +239,6 @@ class DLMyCell : UITableViewCell
     {
         myTableViewController?.navigate(cell: self)
     }
-    func handlevideo()
-    {
-        myTableViewController?.navigatevideo(cell: self)
-    }
+    
     
 }
