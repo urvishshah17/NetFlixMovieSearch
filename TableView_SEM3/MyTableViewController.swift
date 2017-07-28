@@ -320,16 +320,7 @@ class MyCell : UITableViewCell
             Top(15)
         ]
         
-//        listButton <- [
-//            Top(10),
-//            Right(60)
- //       ]
-//        actionButton <- [
-//            //Right(-350),
-//            Top(10),
-//            //Width(750)
-//            Right(10)
-//        ]
+
         
     }
     
@@ -341,9 +332,5 @@ class MyCell : UITableViewCell
     {
         myTableViewController?.navigatevideo(cell: self)
     }
-//    func handleDLMovies()
-//    {
-//        myTableViewController?.navigateDLMovies(cell: self)
-//        
-//    }
+
 }
