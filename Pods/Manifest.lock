@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.4.0)
+  - EasyPeasy (1.4.2)
+  - Kingfisher (3.9.1)
+  - Player (0.5.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - EasyPeasy
+  - Kingfisher (~> 3.0)
+  - Player (~> 0.5.0)
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  EasyPeasy: 50e7130b61f495ce105796e438d4136e2c8d2cc0
+  Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
+  Player: 7bd61af457e558edf938066b03760f035a520837
+
+PODFILE CHECKSUM: b02f1385d4a0d4be28959306bfcca404b88d3984
+
+COCOAPODS: 1.2.1
