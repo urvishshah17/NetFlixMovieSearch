@@ -16,7 +16,8 @@ class DirectorListMoviesVC: UITableViewController{
     
 var nameArray = [String]()
 var imgArray = [String]()
-    public var dirName1: String!
+public var dirName1: String!
+    var titleNameDL = ""
 
     let urlString = "https://netflixroulette.net/api/api.php?director="
     
@@ -64,7 +65,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     if imgURL != nil
     {
         let data = NSData(contentsOf: imgURL! as URL)
-        myCell.imgButton.image = UIImage(data: data as! Data)
+        myCell.imgButton.image = UIImage(data: data! as Data)
     }
 
     myCell.myTableViewController = self
@@ -75,14 +76,23 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
 override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerId")
 }
-func navigate(cell: UITableViewCell){
-    print("hiiiii")
-    let secondVC = LIstVC() as UIViewController
     
-    self.navigationController?.pushViewController(secondVC, animated: true)
+    // Too navigate to details of Movies List
+func navigatedetailMovie(cell: UITableViewCell){
+    print("hiiiii")
+    let detailMovie = MovieDetail() as UIViewController
+    
+    self.navigationController?.pushViewController(detailMovie, animated: true)
     
 }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        titleNameDL = nameArray[indexPath.row]
+        
+        let detailMovie = MovieDetail() as MovieDetail
+        detailMovie.titleName = titleNameDL
+        self.navigationController?.pushViewController(detailMovie, animated: true)
+    }
 
 
 override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -94,6 +104,7 @@ override func tableView(_ tableView: UITableView, commit editingStyle: UITableVi
     }
     tableView.reloadData()
 }
+    
 
 func downloadJsonDataWithURL()
 {
@@ -237,7 +248,7 @@ class DLMyCell : UITableViewCell
     
     func handleaction()
     {
-        myTableViewController?.navigate(cell: self)
+        myTableViewController?.navigatedetailMovie(cell: self)
     }
     
     

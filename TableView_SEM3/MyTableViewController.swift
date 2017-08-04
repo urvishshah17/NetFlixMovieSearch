@@ -84,20 +84,20 @@ class MyTableViewController: UITableViewController{
     }
     
     /* Function to handel click event */
-    func navigate(cell: UITableViewCell){
-        print("hiiiii")
-        let secondVC = LIstVC() as UIViewController
-        
-        self.navigationController?.pushViewController(secondVC, animated: true)
-        
-    }
+//    func navigate(cell: UITableViewCell){
+//        print("hiiiii")
+//        let secondVC = LIstVC() as UIViewController
+//        
+//        self.navigationController?.pushViewController(secondVC, animated: true)
+//        
+//    }
     
-    func navigateDLMovies(cell: MyCell){
-        
-        let dlMoviesVC = DirectorListMoviesVC() as DirectorListMoviesVC
-        dlMoviesVC.dirName1 = dirName
-        self.navigationController?.pushViewController(dlMoviesVC, animated: true)
-    }
+//    func navigateDLMovies(cell: MyCell){
+//        
+//        let dlMoviesVC = DirectorListMoviesVC() as DirectorListMoviesVC
+//        dlMoviesVC.dirName1 = dirName
+//        self.navigationController?.pushViewController(dlMoviesVC, animated: true)
+//    }
     
     
     /* End of Function to handel click event */
@@ -243,13 +243,13 @@ class MyCell : UITableViewCell
         
     }
     
-    func handleaction()
-    {
-        myTableViewController?.navigate(cell: self)
-    }
-    func handlevideo()
-    {
-        myTableViewController?.navigateDLMovies(cell: self)
-    }
+//    func handleaction()
+//    {
+//        myTableViewController?.navigate(cell: self)
+//    }
+//    func handlevideo()
+//    {
+//        myTableViewController?.navigateDLMovies(cell: self)
+//    }
 
 }

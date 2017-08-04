@@ -16,7 +16,7 @@
 		9BDAA5261EC9FADC00F370F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BDAA5241EC9FADC00F370F7 /* LaunchScreen.storyboard */; };
 		9BDAA5311EC9FADC00F370F7 /* TableView_SEM3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAA5301EC9FADC00F370F7 /* TableView_SEM3Tests.swift */; };
 		9BDAA53C1EC9FADC00F370F7 /* TableView_SEM3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAA53B1EC9FADC00F370F7 /* TableView_SEM3UITests.swift */; };
-		9BFF30B91ECDE48400F2C438 /* LIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF30B81ECDE48400F2C438 /* LIstVC.swift */; };
+		9BFF30B91ECDE48400F2C438 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF30B81ECDE48400F2C438 /* MovieDetail.swift */; };
 		CE4D61C26388CA5ED6C40AEE /* Pods_TableView_SEM3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A1BC7988C9588A578F904 /* Pods_TableView_SEM3Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		9BDAA5371EC9FADC00F370F7 /* TableView_SEM3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableView_SEM3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDAA53B1EC9FADC00F370F7 /* TableView_SEM3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView_SEM3UITests.swift; sourceTree = "<group>"; };
 		9BDAA53D1EC9FADC00F370F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BFF30B81ECDE48400F2C438 /* LIstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LIstVC.swift; sourceTree = "<group>"; };
+		9BFF30B81ECDE48400F2C438 /* MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		A1341330B076C3FC69DD6468 /* Pods-TableView_SEM3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView_SEM3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableView_SEM3Tests/Pods-TableView_SEM3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A89EAB8DAF0FAA052379CA15 /* Pods-TableView_SEM3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView_SEM3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableView_SEM3UITests/Pods-TableView_SEM3UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D11E3B7CBCA5AABD8E199848 /* Pods_TableView_SEM3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView_SEM3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +141,7 @@
 			children = (
 				9BDAA51B1EC9FADC00F370F7 /* AppDelegate.swift */,
 				9BDAA51D1EC9FADC00F370F7 /* MyTableViewController.swift */,
-				9BFF30B81ECDE48400F2C438 /* LIstVC.swift */,
+				9BFF30B81ECDE48400F2C438 /* MovieDetail.swift */,
 				9BDAA5221EC9FADC00F370F7 /* Assets.xcassets */,
 				9BDAA5241EC9FADC00F370F7 /* LaunchScreen.storyboard */,
 				9BDAA5271EC9FADC00F370F7 /* Info.plist */,
@@ -450,7 +450,7 @@
 			files = (
 				9BDAA51E1EC9FADC00F370F7 /* MyTableViewController.swift in Sources */,
 				9BDAA51C1EC9FADC00F370F7 /* AppDelegate.swift in Sources */,
-				9BFF30B91ECDE48400F2C438 /* LIstVC.swift in Sources */,
+				9BFF30B91ECDE48400F2C438 /* MovieDetail.swift in Sources */,
 				1575738C1F1D12260063AF1E /* DirectorListMoviesVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

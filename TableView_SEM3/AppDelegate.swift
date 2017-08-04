@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let newVc =  UINavigationController(rootViewController: LIstVC())
-        window?.rootViewController = newVc
+        let detailMovie =  UINavigationController(rootViewController: MovieDetail())
+        window?.rootViewController = detailMovie
         
         
         let videoVc1 =  UINavigationController(rootViewController: DirectorListMoviesVC())
