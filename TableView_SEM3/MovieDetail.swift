@@ -84,6 +84,7 @@ class MovieDetail: UIViewController{
     
     func setupViews()
     {
+        self.view = (namelabel)
         namelabel <- [
             Left(10),
             Top(15)

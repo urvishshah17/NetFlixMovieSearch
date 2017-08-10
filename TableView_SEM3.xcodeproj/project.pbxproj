@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152410BE1F3A09F7008AD083 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152410BD1F3A09F7008AD083 /* Detail.swift */; };
 		1575738C1F1D12260063AF1E /* DirectorListMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1575738B1F1D12260063AF1E /* DirectorListMoviesVC.swift */; };
 		1E8ADD23AA797D5D1D137591 /* Pods_TableView_SEM3UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3775D54DF20031E0E9EB89 /* Pods_TableView_SEM3UITests.framework */; };
 		3913D3FEB60F2F517A05A297 /* Pods_TableView_SEM3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11E3B7CBCA5AABD8E199848 /* Pods_TableView_SEM3.framework */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1083FA31DE35A984BCED98A1 /* Pods-TableView_SEM3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView_SEM3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableView_SEM3Tests/Pods-TableView_SEM3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		152410BD1F3A09F7008AD083 /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		1575738B1F1D12260063AF1E /* DirectorListMoviesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectorListMoviesVC.swift; sourceTree = "<group>"; };
 		3A3775D54DF20031E0E9EB89 /* Pods_TableView_SEM3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView_SEM3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A1BC7988C9588A578F904 /* Pods_TableView_SEM3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView_SEM3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				9BDAA51B1EC9FADC00F370F7 /* AppDelegate.swift */,
 				9BDAA51D1EC9FADC00F370F7 /* MyTableViewController.swift */,
 				9BFF30B81ECDE48400F2C438 /* MovieDetail.swift */,
+				152410BD1F3A09F7008AD083 /* Detail.swift */,
 				9BDAA5221EC9FADC00F370F7 /* Assets.xcassets */,
 				9BDAA5241EC9FADC00F370F7 /* LaunchScreen.storyboard */,
 				9BDAA5271EC9FADC00F370F7 /* Info.plist */,
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BDAA51E1EC9FADC00F370F7 /* MyTableViewController.swift in Sources */,
+				152410BE1F3A09F7008AD083 /* Detail.swift in Sources */,
 				9BDAA51C1EC9FADC00F370F7 /* AppDelegate.swift in Sources */,
 				9BFF30B91ECDE48400F2C438 /* MovieDetail.swift in Sources */,
 				1575738C1F1D12260063AF1E /* DirectorListMoviesVC.swift in Sources */,

@@ -89,7 +89,7 @@ func navigatedetailMovie(cell: UITableViewCell){
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         titleNameDL = nameArray[indexPath.row]
         
-        let detailMovie = MovieDetail() as MovieDetail
+        let detailMovie = Detail() as Detail
         detailMovie.titleName = titleNameDL
         self.navigationController?.pushViewController(detailMovie, animated: true)
     }
