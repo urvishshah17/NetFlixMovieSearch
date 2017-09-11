@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView_SEM3/Detail.swift"
-            timestampString = "524068846.711715"
+            timestampString = "526316393.513596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "downloadJsonDataWithURL()"
             landmarkType = "7">
          </BreakpointContent>

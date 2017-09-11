@@ -21,24 +21,30 @@ class MyTableViewController: UITableViewController{
          // let urlString = "http://netflixroulette.net/api/api.php?director=Quentin%20Tarantino"
            // let urlString = "https://netflixroulette.net/api/api.php?director="
     let urlString = "https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage"
-        override func viewDidLoad() {
+    
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         
                self.downloadJsonDataWithURL()
          
-            
+
         navigationItem.title = "NetFlix Movies List"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain , target: self, action: #selector(MyTableViewController.insert))
-            
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Fav", style: .plain , target: self, action: #selector(navFavourite))
             
         self.tableView.register(MyCell.self, forCellReuseIdentifier: "cellId")
         self.tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: "headerId")
         tableView.sectionHeaderHeight = 50
     }
 
-    func insert()
-    {
+    func navFavourite(){
+        let favouriteVC = Favourite() as Favourite
+        self.navigationController?.pushViewController(favouriteVC, animated: true)
+    }
+    
+    func insert(){
         print("HI")
         nameArray.append("List Cell  \(nameArray.count + 1)")
         imgArray.append("New \(imgArray.count + 1)")
@@ -55,13 +61,14 @@ class MyTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dirName = nameArray[indexPath.row]
-        
+        dirName = nameArray[indexPath.row]        
         let dlMoviesVC = DirectorListMoviesVC() as DirectorListMoviesVC
         dlMoviesVC.dirName1 = dirName
         self.navigationController?.pushViewController(dlMoviesVC, animated: true)
     }
     
+    
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MyCell
         myCell.namelabel.text = nameArray[indexPath.row]
@@ -84,13 +91,19 @@ class MyTableViewController: UITableViewController{
     }
     
     /* Function to handel click event */
-//    func navigate(cell: UITableViewCell){
+    
+    func navButtonClick(cell: UITableViewCell){
 //        print("hiiiii")
 //        let secondVC = LIstVC() as UIViewController
 //        
 //        self.navigationController?.pushViewController(secondVC, animated: true)
-//        
-//    }
+        //dirName = nameArray[indexPath.row]
+        
+        let dlMoviesVC = DirectorListMoviesVC() as DirectorListMoviesVC
+        dlMoviesVC.dirName1 = dirName
+        self.navigationController?.pushViewController(dlMoviesVC, animated: true)
+        
+    }
     
 //    func navigateDLMovies(cell: MyCell){
 //        
@@ -213,6 +226,16 @@ class MyCell : UITableViewCell
         return button
         
     }()
+    
+    let navButton : UIButton = {
+        var button = UIButton(type: .system)
+        let image = UIImage(named: "forward")
+        button.setBackgroundImage(image, for: .normal)
+        return button
+        
+    }()
+
+    
     let imgButton : UIImageView = {
         var img = UIImageView()
         return img
@@ -226,7 +249,10 @@ class MyCell : UITableViewCell
     {
         addSubview(namelabel)
         addSubview(imgButton)
-       imgButton <- [
+        addSubview(navButton)
+        navButton.addTarget(self, action: #selector(MyCell.handleaction), for: .touchUpInside)
+       
+        imgButton <- [
             Top(1),
             Left(10),
             Bottom(1),
@@ -239,14 +265,19 @@ class MyCell : UITableViewCell
             Top(15)
         ]
         
+        navButton <- [
+            Right(10),
+            Top(15)
+        ]
+        
 
         
     }
     
-//    func handleaction()
-//    {
-//        myTableViewController?.navigate(cell: self)
-//    }
+    func handleaction()
+    {
+        myTableViewController?.navButtonClick(cell: self)
+    }
 //    func handlevideo()
 //    {
 //        myTableViewController?.navigateDLMovies(cell: self)

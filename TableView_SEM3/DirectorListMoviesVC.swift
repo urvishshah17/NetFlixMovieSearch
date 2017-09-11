@@ -12,17 +12,61 @@ import AVFoundation
 import AVKit
 import Foundation
 
-class DirectorListMoviesVC: UITableViewController{
+protocol MyCellDelegate {
+    func btnNavTapped(myCell: DLMyCell)
+    func btnFavTapped(myCell: DLMyCell)
+}
+
+
+class DirectorListMoviesVC: UITableViewController,MyCellDelegate{
     
+    var titleNameDL = ""
+
+  
+   
 var nameArray = [String]()
 var imgArray = [String]()
 public var dirName1: String!
-    var titleNameDL = ""
+    // For Favourite List
+    var favListArray:NSMutableArray = []
 
+    
     let urlString = "https://netflixroulette.net/api/api.php?director="
     
   // let finalString = "\(urlString) \(dirName1)"
+ 
+    // View will Appear
+//    override func viewWillAppear(_ animated: Bool) {
+//        
+//        super.viewWillAppear(animated)
+//        
+//        if UserDefaults.standard.object(forKey: "favList") != nil {
+//            
+//            favListArray = NSMutableArray.init(array: UserDefaults.standard.object(forKey: "favList") as! NSMutableArray)
+//            
+//        }
+//        
+//    }
     
+    func btnNavTapped(myCell: DLMyCell) {
+        let indexPath = self.tableView.indexPath(for: myCell)
+        print(indexPath!.row)
+        
+        titleNameDL = nameArray[(indexPath?.row)!]
+        
+        let detailMovie = Detail() as Detail
+        detailMovie.titleName = titleNameDL
+        self.navigationController?.pushViewController(detailMovie, animated: true)
+        
+    }
+    func btnFavTapped(myCell: DLMyCell) {
+        let indexPath = self.tableView.indexPath(for: myCell)
+        print(indexPath!.row)
+        print ("New")
+        
+        
+    }
+
 override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -51,6 +95,18 @@ func insert()
     tableView.insertRows(at: [insertionpath as IndexPath], with: .automatic)
 
 }
+
+//func btnCloseTapped(myCell: DLMyCell) {
+//    //Get the indexpath of cell where button was tapped
+//    let indexPath = self.collectionView.indexPathForCell(myCell)
+//    print(indexPath!.row)
+//}
+
+//    func btnCloseTapped(cell: MyCell) {
+//        //Get the indexpath of cell where button was tapped
+//        let indexPath = self.DirectorListMoviesVC.indexPathForCell(cell)
+//        print(indexPath!.row)
+//    }
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return nameArray.count
 }
@@ -59,6 +115,8 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
   
     let myCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DLMyCell
     myCell.namelabel.text = nameArray[indexPath.row]
+    
+    
     
     let imgURL = NSURL(string: imgArray[indexPath.row])
     
@@ -69,30 +127,57 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     }
 
     myCell.myTableViewController = self
+    myCell.delegate = self
+    
+    myCell.favouriteButton.tag = indexPath.row
+
     
     return myCell
 }
+    
 
 override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerId")
 }
     
     // Too navigate to details of Movies List
-func navigatedetailMovie(cell: UITableViewCell){
-    print("hiiiii")
-    let detailMovie = MovieDetail() as UIViewController
+    func navigatedetailMovie(cell: UITableViewCell){
+        print("hiiiii")
+        let detailMovie = MovieDetail() as UIViewController
     
-    self.navigationController?.pushViewController(detailMovie, animated: true)
-    
-}
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        titleNameDL = nameArray[indexPath.row]
-        
-        let detailMovie = Detail() as Detail
-        detailMovie.titleName = titleNameDL
         self.navigationController?.pushViewController(detailMovie, animated: true)
+    
     }
+    
+
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
+    // Swipe-able Table View Cell
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
+            print("more button tapped")
+        }
+        more.backgroundColor = .lightGray
+        
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+            
+            print("favorite button tapped")
+           
+        
+        }
+        favorite.backgroundColor = .orange
+        
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+            print("share button tapped")
+        }
+        share.backgroundColor = .blue
+        
+        return [share, favorite, more]
+    }
+
 
 
 override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -104,6 +189,7 @@ override func tableView(_ tableView: UITableView, commit editingStyle: UITableVi
     }
     tableView.reloadData()
 }
+    
     
 
 func downloadJsonDataWithURL()
@@ -205,15 +291,55 @@ class DLMyCell : UITableViewCell
         return label
     }()
     
-    let actionButton : UIButton = {
+    var favouriteButton : UIButton = {
         var button = UIButton(type: .system)
-        button.setTitle("Audio", for: .normal)
-        
-        //button.translatesAutoresizingMaskIntoConstraints = false
-        //button.font = UIFont.boldSystemFont(ofSize: 5)
+        let image = UIImage(named: "isDeSelectedFavourite.png")
+        button.setBackgroundImage(image, for: .normal)
         return button
         
     }()
+    var navButton : UIButton = {
+        var button = UIButton(type: .system)
+        let image = UIImage(named: "forward")
+        button.setBackgroundImage(image, for: .normal)
+        return button
+        
+    }()
+    
+   
+    
+    //2. create delegate variable
+    var delegate: MyCellDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+    }
+    
+    //3. assign this action to close button
+    func navButtonTapped(sender: AnyObject){
+        //4. call delegate method
+        //check delegate is not nil
+        if let _ = delegate {
+            delegate?.btnNavTapped(myCell: self)
+        }
+    }
+    func favButtonTapped(sender: AnyObject){
+        //4. call delegate method
+        //check delegate is not nil
+        if let _ = delegate {
+            delegate?.btnFavTapped(myCell: self)
+        }
+    }
+    
+//    @IBAction func favouriteButtonTapped(sender: AnyObject){
+//        //4. call delegate method
+//        //check delegate is not nil
+//        if let _ = MyCellDelegate {
+//            MyCellDelegate?.btnCloseTapped(self)
+//        }
+//    }
     
     
     let imgButton : UIImageView = {
@@ -221,15 +347,22 @@ class DLMyCell : UITableViewCell
         return img
     }()
     
-    func barItemTapped(sender : UIButton) {
+        func barItemTapped(sender : UIButton) {
         print("Helloooo")
     }
+    
     func setupViews()
     {
         addSubview(namelabel)
-        addSubview(actionButton)
+       addSubview(favouriteButton)
         addSubview(imgButton)
-      actionButton.addTarget(self, action: "handleaction", for: .touchUpInside)
+        addSubview(navButton)
+  
+        favouriteButton.addTarget(self, action: "favaction", for: .touchUpInside)
+        navButton.addTarget(self, action: #selector(MyCell.handleaction), for: .touchUpInside)
+        //favouriteButton.addTarget(self, action: #selector(MyCell.), for: .touchUpInside)
+        
+        
         
         imgButton <- [
             Top(1),
@@ -243,12 +376,26 @@ class DLMyCell : UITableViewCell
             Left(10).to(imgButton),
             Top(15)
         ]
+        favouriteButton <- [
+            
+            Right(3).to(navButton),
+            Top(15)
+        ]
+        navButton <- [
+            Right(10),
+            Top(15)
+        ]
+
         
     }
     
     func handleaction()
     {
-        myTableViewController?.navigatedetailMovie(cell: self)
+        myTableViewController?.btnNavTapped(myCell: self)
+    }
+    func favaction()
+    {
+        myTableViewController?.btnFavTapped(myCell: self)
     }
     
     

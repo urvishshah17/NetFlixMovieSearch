@@ -12,24 +12,69 @@ class Detail: UIViewController {
 
     var nameArray = [String]()
        public var titleName: String!
+    var isCouponFav = UserDefaults.standard.bool(forKey: "isCouponFav")
     
-    let urlString = "http://netflixroulette.net/api/api.php?title="
-    
-    let namelabel = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 210))
+    let
+ urlString = "http://netflixroulette.net/api/api.php?title="
+        let namelabel = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 210))
     let imgButton = UIImageView(frame: CGRect(x: 0, y: 0, width: 250, height: 210))
+    let favButton = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 210))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Fav", style: .plain , target: self, action: #selector(MyTableViewController.insert))
+        
+        
         self.view.backgroundColor = UIColor.white
         downloadJsonDataWithURL()
        
+        favButton.center = CGPoint(x:45, y:300)
+        let image = UIImage(named: "isDeSelectedFavourite.png")
+        favButton.setImage(image, for: .normal)
         imgButton.center = CGPoint(x:160, y:185)
         
-        namelabel.center = CGPoint(x: 160, y: 300)
+        namelabel.center = CGPoint(x: 180, y: 300)
         namelabel.textAlignment = .center
+        
+        
+        
         
         self.view.addSubview(imgButton)
         self.view.addSubview(namelabel)
+        favButton.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+        self.view.addSubview(favButton)
+        
+        
+        
+    }
+    func buttonClicked() {
+        print("Button Clicked")
+        
+        
+        var favorites : [String] = []
+        let defaults = UserDefaults.standard
+        if let favoritesDefaults : AnyObject? = defaults.object(forKey: "isCouponFav") as AnyObject {
+            favorites = favoritesDefaults as! [String]
+        }
+
+       favorites.append(namelabel.text!)
+//        defaults.set(favorites, forKey: "favorites")
+//        defaults.synchronize()
+        
+        
+        
+        if isCouponFav {
+            let image = UIImage(named: "isDeSelectedFavourite.png")
+            favButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "isSelectedFavourite.png")
+            favButton.setImage(image, for: .normal)
+        }
+        
+        isCouponFav = !isCouponFav
+        UserDefaults.standard.set(isCouponFav, forKey: "isCouponFav")
+        UserDefaults.standard.synchronize()
     }
 
     // Getting Data using Json Object from API by getting title name from previous Screen and combine it to Final URL.
